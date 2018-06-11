@@ -1,0 +1,133 @@
+def racial(race):
+    racas = [0, 'Humano', 'Hobbit', 'Dríade', 'Goblin', 'Elfo', 'Gigante', 'Troll', 'Anão', 'Orc']
+    race = racas[race]
+    return race
+
+def classes(classe):
+    classList = [0,'Guerreiro', 'Arqueiro', 'Lanceiro', 'Mago', 'Ladino', 'Paladino', 'Druida', 'Bárbaro']
+    guerreiro, arqueiro, lanceiro, mago, ladino, paladino, druida, barbaro = 0, 0, 0, 0, 0, 0, 0, 0
+    classe = classList[classe]
+    return classe
+
+def quest1(dentes):
+    print("Responda as seguintes perguntas pessoais: ")
+    print("Escolha 1 para SIM e 2 para NÃO.")
+    pontuacao = 0
+
+    if dentes == 1:
+        pontuacao = pontuacao + 3
+        return "Você ganhou 3 pontos!", pontuacao
+    else:
+        return "Você não passou nesse teste!"
+
+
+def quest2(guerra):
+    pontuacao = 0
+    if guerra == 1:
+        pontuacao = pontuacao + 1
+        return "Você ganhou +1 ponto!"
+    else:
+        return "Você não passou nesse teste!"
+
+
+def quest3(unigen):
+    pontuacao = 0
+    if unigen == 1:
+        return "Que pena, você não ganha nada..."
+    else:
+        pontuacao = pontuacao + 2
+        return "Parabéns, +2 pontos."
+
+def quest4(armadura):
+    pontuacao = 0
+    if armadura == 1:
+        pontuacao = pontuacao + 1
+        return "Uau, +1 ponto!"
+
+    else:
+        return "Poxa, não tem nem uma armadura?"
+
+def quest5(indicacao):
+    pontuacao = 0
+    if indicacao == 1:
+        pontuacao = pontuacao + 2
+        return "Você tem QI, Quem Indique... Parabéns, +2 pontos"
+
+    else:
+        return "Bem... vamos prosseguir..."
+
+aprovados = []
+reprovados = []
+reservas = []
+classCandid = []
+raceCandid = []
+ptsCandid = []
+
+
+start = 0  # Variavel de parada
+while start == 0:
+    humano, hobbit, driade, goblin, elfo, gigante, troll, anao, orc = 0, 0, 0, 0, 0, 0, 0, 0, 0
+    inscritos = 0
+    print("\nOh nobres participantes!")
+    print("Você está na pré-seleção para o exército do reino de Tão Tão Distante!")
+    print("Para saber se você tem aptidão para fazer parte da nossa armada, terá que passar")
+    print("por alguns pré-requisitos e uma prova especifica.")
+    print("Vamos lá!")
+    nome = input("Digite seu nome! ")
+    print("Vamos começar com as Raças e Classes")
+
+    race = 0
+    stop = False
+    while stop == False:
+        print("Essas são as raças")
+        print("[1]Humano\n[2]Hobbit\n[3]Dríade\n[4]Goblin\n[5]Elfo\n[6]Gigante\n[7]Troll da montanha\n[8]Anão\n[9]Orc")
+        race = int(input("Digite o numero da sua raça: "))
+        if race < 1 or race > 9:
+            stop = False
+        else:
+            stop = True
+        race = racial(race)
+    print("Hm... {}, o {}!".format(nome, race))
+
+    classe = 0
+    stop = False
+    while stop == False:
+        print("Essas são as classe")
+        print("[1]Guerreiro\n[2]Arqueiro\n[3]Lanceiro\n[4]Mago\n[5]Ladino\n[6]Paladino\n[7]Druida\n[8]Bárbaro")
+        classe = int(input("Digite o numero da sua classe: "))
+        if classe < 1 or classe > 9:
+            stop = False
+        else:
+            stop = True
+        classe = classes(classe)
+        print("Hm... um {} " .format(race), classe)
+
+    def main():
+        pontuacao = 0
+
+        dentes = int(input("Você tem todos os dentes (e inteiros)?"))
+        print(quest1(dentes))
+
+        guerra = int(input("Já lutou em alguma guerra?"))
+        print(quest2(guerra))
+
+        unigen = int(input("Você é filho único?"))
+        print(quest3(unigen))
+
+        armadura = int(input("Você possui armadura própria?"))
+        print(quest4(armadura))
+
+        indicacao = int(input("Você foi indicado por um nobre?"))
+        print(quest5(indicacao))
+
+        print(pontuacao)
+
+    main()
+
+    op = int(input("Digite 0 para continuar ou -1 para parar."))
+    if op == 0:
+        start = 0
+    elif op == -1:
+        start = -1
+    else:
+        print("Opção Inválida!")
